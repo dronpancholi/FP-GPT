@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FP-GPT Roadmap & Vision</title>
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            100: '#0f1118',
+                            200: '#161926',
+                            300: '#1e2235',
+                            400: '#2a2f44'
+                        },
+                        accent: {
+                            blue: '#60a5fa',
+                            green: '#34d399',
+                            purple: '#8b5cf6',
+                            red: '#f87171',
+                            yellow: '#fbbf24'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <style>
+        .gradient-text {
+            background: linear-gradient(45deg, #60a5fa, #34d399, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: linear-gradient(to right, #60a5fa, #34d399);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .card {
+            background: rgba(30, 34, 53, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(96, 165, 250, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+
+        .phase-indicator {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .phase-indicator::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .phase-current::before { background: #60a5fa; }
+        .phase-planned::before { background: #34d399; }
+        .phase-future::before { background: #8b5cf6; }
+    </style>
+</head>
+<body class="bg-dark-100 text-gray-100 min-h-screen">
+    <!-- Header with Progress -->
+    <header class="fixed w-full top-0 bg-dark-200/80 backdrop-blur-md border-b border-dark-300 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                        <span>Back to Chat</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-sm text-gray-400">Project Progress</div>
+                    <div class="w-32 h-2 bg-dark-300 rounded-full">
+                        <div class="progress-bar" style="width: 35%"></div>
+                    </div>
+                    <span class="bg-dark-300 px-2 py-1 rounded-full text-xs flex items-center gap-1">
+                        <i data-lucide="git-branch" class="w-3 h-3"></i>
+                        v0.3 tendi
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <div class="bg-dark-200 border-b border-dark-300">
+            <div class="max-w-7xl mx-auto px-4 py-16">
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-6">FP-GPT Vision & Roadmap</h1>
+                    <p class="text-gray-400 max-w-3xl mx-auto text-lg mb-4">
+                        Charting our journey from foundation to future innovation in AI technology
+                    </p>
+                    <div class="flex items-center justify-center space-x-2 text-sm text-gray-400">
+                        <i data-lucide="code" class="w-4 h-4"></i>
+                        <span>Created by</span>
+                        <a href="https://github.com/dronpancholi" target="_blank" 
+                           class="text-blue-400 hover:text-blue-300 transition-colors font-medium">
+                            Dron Pancholi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase Overview -->
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <!-- Goals Grid from portfolio.html -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <!-- Short-term Goals (2025 Q1&2) -->
+                <div class="space-y-6">
+                    <h2 class="text-2xl font-semibold text-blue-400">2025 Q1&2 Goals</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-dark-200 rounded-lg">
+                            <h3 class="font-semibold text-accent-green mb-2">API Integration</h3>
+                            <ul class="text-sm text-gray-400 space-y-2">
+                                <li>• Integrate 50+ knowledge APIs</li>
+                                <li>• Implement real-time data synchronization</li>
+                                <li>• Develop API fallback mechanisms</li>
+                                <li>• Create unified API response format</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mid-term Goals (2025 Q3&4) -->
+                <div class="space-y-6">
+                    <h2 class="text-2xl font-semibold text-purple-400">2025 Q3&4 Vision</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-dark-200 rounded-lg">
+                            <h3 class="font-semibold text-accent-purple mb-2">AI Enhancement</h3>
+                            <ul class="text-sm text-gray-400 space-y-2">
+                                <li>• Develop custom language models</li>
+                                <li>• Implement multi-modal capabilities</li>
+                                <li>• Create domain-specific knowledge graphs</li>
+                                <li>• Enhanced context understanding</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Long-term Goals (2026+) -->
+                <div class="space-y-6">
+                    <h2 class="text-2xl font-semibold text-green-400">Future Horizons</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-dark-200 rounded-lg">
+                            <h3 class="font-semibold text-accent-blue mb-2">Innovation Focus</h3>
+                            <ul class="text-sm text-gray-400 space-y-2">
+                                <li>• Quantum computing integration</li>
+                                <li>• Decentralized knowledge network</li>
+                                <li>• Advanced cognitive architecture</li>
+                                <li>• Global knowledge democratization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Current Phase -->
+                <div class="card p-6 rounded-xl">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="phase-indicator phase-current">
+                            <h3 class="text-xl font-semibold text-blue-400">Foundation Phase</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Building core infrastructure and establishing fundamental AI capabilities</p>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-blue-400">In Progress</span>
+                        <span class="text-gray-400">35% Complete</span>
+                    </div>
+                </div>
+
+                <!-- Planned Phase -->
+                <div class="card p-6 rounded-xl">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="phase-indicator phase-planned">
+                            <h3 class="text-xl font-semibold text-green-400">Expansion Phase</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Scaling capabilities and extending reach through advanced features</p>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-green-400">Planned</span>
+                        <span class="text-gray-400">Q2 2025</span>
+                    </div>
+                </div>
+
+                <!-- Future Phase -->
+                <div class="card p-6 rounded-xl">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="phase-indicator phase-future">
+                            <h3 class="text-xl font-semibold text-purple-400">Innovation Phase</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Pushing boundaries with quantum computing and cognitive evolution</p>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-purple-400">Future Vision</span>
+                        <span class="text-gray-400">2025+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Roadmap -->
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <h2 class="text-3xl font-bold gradient-text mb-8">Detailed Roadmap</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Foundation Phase -->
+                <section class="space-y-6">
+                    <div class="sticky top-24 bg-dark-100/80 backdrop-blur-md py-4 z-40">
+                        <h3 class="text-2xl font-semibold text-blue-400 flex items-center gap-2">
+                            <i data-lucide="layers" class="w-6 h-6"></i>
+                            Foundation Phase
+                        </h3>
+                    </div>
+
+                    <!-- Core AI Development -->
+                    <div class="space-y-4">
+                        <div class="p-4 bg-dark-200 rounded-lg">
+                            <h4 class="font-medium text-accent-blue mb-3">Core AI Development</h4>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li>• Implement base language models</li>
+                                <li>• Develop context understanding</li>
+                                <li>• Create knowledge graph system</li>
+                                <li>• Build response generation</li>
+                                <li>• Establish data processing pipeline</li>
+                                <li>• Create model training system</li>
+                                <li>• Implement error handling</li>
+                                <li>• Develop testing framework</li>
+                                <li>• Build model evaluation tools</li>
+                                <li>• Create performance metrics</li>
+                            </ul>
+                        </div>
+
+                        <!-- Infrastructure -->
+                        <div class="p-4 bg-dark-200 rounded-lg">
+                            <h4 class="font-medium text-accent-blue mb-3">Infrastructure</h4>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li>• Set up cloud infrastructure</li>
+                                <li>• Implement load balancing</li>
+                                <li>• Create backup systems</li>
+                                <li>• Develop monitoring tools</li>
+                                <li>• Build deployment pipeline</li>
+                                <li>• Establish security protocols</li>
+                                <li>• Create scaling mechanisms</li>
+                                <li>• Implement caching system</li>
+                                <li>• Develop API gateway</li>
+                                <li>• Build logging system</li>
+                            </ul>
+                        </div>
+
+                        <!-- Knowledge Sources -->
+                        <div class="p-4 bg-dark-200 rounded-lg">
+                            <h4 class="font-medium text-accent-blue mb-3">Knowledge Sources</h4>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li>• Wikipedia Integration ✓</li>
+                                <li>• DuckDuckGo Integration ✓</li>
+                                <li>• Reddit Integration ✓</li>
+                                <li>• Wikidata Integration ✓</li>
+                                <li>• arXiv Integration ✓</li>
+                                <li>• Unpaywall Integration ✓</li>
+                                <li>• Google Scholar Integration (Planned)</li>
+                                <li>• PubMed Integration (Planned)</li>
+                                <li>• News API Integration (Planned)</li>
+                                <li>• Stack Exchange Integration (Planned)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Expansion Phase -->
+                <section class="space-y-6">
+                    <div class="sticky top-24 bg-dark-100/80 backdrop-blur-md py-4 z-40">
+                        <h3 class="text-2xl font-semibold text-green-400 flex items-center gap-2">
+                            <i data-lucide="expand" class="w-6 h-6"></i>
+                            Expansion Phase
+                        </h3>
+                    </div>
+
+                    <!-- Advanced Features -->
+                    <div class="space-y-4">
+                        <div class="p-4 bg-dark-200 rounded-lg">
+                            <h4 class="font-medium text-accent-green mb-3">Advanced Features</h4>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li>• Implement multimodal processing</li>
+                                <li>• Develop voice interface</li>
+                                <li>• Create image understanding</li>
+                                <li>• Build video analysis</li>
+                                <li>• Implement sentiment analysis</li>
+                                <li>• Develop entity recognition</li>
+                                <li>• Create summarization system</li>
+                                <li>• Build translation features</li>
+                                <li>• Implement code understanding</li>
+                                <li>• Develop data visualization</li>
+                            </ul>
+                        </div>
+
+                        <!-- Global Reach -->
+                        <div class="p-4 bg-dark-200 rounded-lg">
+                            <h4 class="font-medium text-accent-green mb-3">Global Reach</h4>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li>• Implement multilingual support</li>
+                                <li>• Create cultural adaptation</li>
+                                <li>• Build regional knowledge bases</li>
+                                <li>• Develop localization system</li>
+                                <li>• Implement timezone handling</li>
+                                <li>• Create regional compliance</li>
+                                <li>• Build international APIs</li>
+                                <li>• Develop global CDN</li>
+                                <li>• Create regional backups</li>
+                                <li>• Implement geo-routing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Innovation Phase -->
+                <section class="space-y-6">
+                    <div class="sticky top-24 bg-dark-100/80 backdrop-blur-md py-4 z-40">
+                        <h3 class="text-2xl font-semibold text-purple-400 flex items-center gap-2">
+                            <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            Innovation Phase
+                        </h3>
+                    </div>
+
+                    <!-- Future Technologies -->
+                    <div class="space-y-4">
+                        <div class="p-4 bg-dark-200 rounded-lg">
+                            <h4 class="font-medium text-accent-purple mb-3">Future Technologies</h4>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li>• Implement quantum computing</li>
+                                <li>• Develop brain-computer interface</li>
+                                <li>• Create AR/VR integration</li>
+                                <li>• Build autonomous systems</li>
+                                <li>• Implement neural networks</li>
+                                <li>• Develop AI consciousness</li>
+                                <li>• Create emotional intelligence</li>
+                                <li>• Build creative generation</li>
+                                <li>• Implement ethical reasoning</li>
+                                <li>• Develop self-improvement</li>
+                            </ul>
+                        </div>
+
+                        <!-- Research & Innovation -->
+                        <div class="p-4 bg-dark-200 rounded-lg">
+                            <h4 class="font-medium text-accent-purple mb-3">Research & Innovation</h4>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li>• Establish research partnerships</li>
+                                <li>• Create innovation lab</li>
+                                <li>• Develop research papers</li>
+                                <li>• Build experimental features</li>
+                                <li>• Implement new algorithms</li>
+                                <li>• Create research grants</li>
+                                <li>• Build academic collaborations</li>
+                                <li>• Develop patents</li>
+                                <li>• Create innovation challenges</li>
+                                <li>• Implement research platform</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-dark-200 border-t border-dark-300 mt-20">
+        <div class="max-w-7xl mx-auto">
+            <!-- Upper Footer -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-4 py-12 border-b border-dark-300">
+                <!-- Project Info -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-accent-blue">FP-GPT</h3>
+                    <p class="text-sm text-gray-400">
+                        An advanced AI knowledge assistant integrating multiple data sources for comprehensive information retrieval.
+                    </p>
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-accent-blue/10 text-accent-blue text-xs px-2 py-1 rounded-full">
+                            v0.3 tendi
+                        </span>
+                        <span class="bg-accent-green/10 text-accent-green text-xs px-2 py-1 rounded-full">
+                            35% Complete
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-accent-green">Quick Links</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>
+                            <a href="index.html" class="hover:text-accent-green transition-colors flex items-center gap-2">
+                                <i data-lucide="message-square" class="w-4 h-4"></i>
+                                Try FP-GPT
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/dronpancholi/fp-gpt" target="_blank" 
+                               class="hover:text-accent-green transition-colors flex items-center gap-2">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub Repository
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="showPrivacyPolicy()" 
+                               class="hover:text-accent-green transition-colors flex items-center gap-2">
+                                <i data-lucide="shield" class="w-4 h-4"></i>
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="showTerms()" 
+                               class="hover:text-accent-green transition-colors flex items-center gap-2">
+                                <i data-lucide="file-text" class="w-4 h-4"></i>
+                                Terms & Conditions
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Technologies -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-accent-purple">Technologies</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-dark-300 text-xs px-2 py-1 rounded-full text-gray-400">TypeScript</span>
+                        <span class="bg-dark-300 text-xs px-2 py-1 rounded-full text-gray-400">React</span>
+                        <span class="bg-dark-300 text-xs px-2 py-1 rounded-full text-gray-400">Node.js</span>
+                        <span class="bg-dark-300 text-xs px-2 py-1 rounded-full text-gray-400">TailwindCSS</span>
+                        <span class="bg-dark-300 text-xs px-2 py-1 rounded-full text-gray-400">REST APIs</span>
+                        <span class="bg-dark-300 text-xs px-2 py-1 rounded-full text-gray-400">AI/ML</span>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-accent-blue">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/dronpancholi" target="_blank" 
+                           class="bg-dark-300 p-2 rounded-lg hover:bg-dark-400 transition-colors">
+                            <i data-lucide="github" class="w-5 h-5 text-gray-400"></i>
+                        </a>
+                        <a href="https://twitter.com/dronpancholi" target="_blank" 
+                           class="bg-dark-300 p-2 rounded-lg hover:bg-dark-400 transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5 text-gray-400"></i>
+                        </a>
+                        <a href="https://instagram.com/dronpancholi" target="_blank" 
+                           class="bg-dark-300 p-2 rounded-lg hover:bg-dark-400 transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5 text-gray-400"></i>
+                        </a>
+                        <a href="https://threads.net/@dronpancholi" target="_blank" 
+                           class="bg-dark-300 p-2 rounded-lg hover:bg-dark-400 transition-colors">
+                            <i data-lucide="at-sign" class="w-5 h-5 text-gray-400"></i>
+                        </a>
+                        <a href="https://huggingface.co/dronpancholi" target="_blank" 
+                           class="bg-dark-300 p-2 rounded-lg hover:bg-dark-400 transition-colors">
+                            <i data-lucide="box" class="w-5 h-5 text-gray-400"></i>
+                        </a>
+                    </div>
+                    <p class="text-sm text-gray-400">
+                        Have questions or suggestions? Feel free to open an issue on GitHub.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Lower Footer -->
+            <div class="px-4 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+                    <div class="flex items-center space-x-2">
+                        <span>© 2025 FP-GPT.</span>
+                        <span class="hidden md:inline">|</span>
+                        <span>Created with 💙 by</span>
+                        <a href="https://github.com/dronpancholi" target="_blank" 
+                           class="text-accent-blue hover:text-blue-400 transition-colors">
+                            Dron Pancholi
+                        </a>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button onclick="scrollToTop()" 
+                                class="flex items-center gap-2 hover:text-accent-blue transition-colors">
+                            <span>Back to top</span>
+                            <i data-lucide="chevron-up" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Smooth scroll to section
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Update progress bar on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.querySelector('.progress-bar').style.width = Math.min(scrollPercent, 100) + '%';
+        });
+
+        // Smooth scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Privacy Policy Modal
+        function showPrivacyPolicy() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="bg-dark-200 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 relative">
+                    <button onclick="this.closest('.fixed').remove()" 
+                            class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                    <h2 class="text-2xl font-bold text-accent-blue mb-4">Privacy Policy</h2>
+                    <div class="prose prose-invert prose-sm">
+                        <p class="text-gray-400">Last updated: January 2025</p>
+                        <p class="mt-4 text-gray-300">
+                            FP-GPT is committed to protecting your privacy. This Privacy Policy explains how we collect,
+                            use, and safeguard your information when you use our service.
+                        </p>
+                        <h3 class="text-lg font-semibold text-white mt-6">Information We Collect</h3>
+                        <ul class="text-gray-300 list-disc pl-5 space-y-2">
+                            <li>Query content and search history</li>
+                            <li>Usage patterns and interaction data</li>
+                            <li>Technical information (browser type, device info)</li>
+                            <li>Performance metrics and error logs</li>
+                        </ul>
+
+                        <h3 class="text-lg font-semibold text-white mt-6">How We Use Your Information</h3>
+                        <ul class="text-gray-300 list-disc pl-5 space-y-2">
+                            <li>Improve search results and relevance</li>
+                            <li>Enhance user experience and interface</li>
+                            <li>Debug and optimize performance</li>
+                            <li>Develop new features and capabilities</li>
+                        </ul>
+
+                        <h3 class="text-lg font-semibold text-white mt-6">Data Security</h3>
+                        <p class="text-gray-300">
+                            We implement industry-standard security measures to protect your data:
+                        </p>
+                        <ul class="text-gray-300 list-disc pl-5 space-y-2">
+                            <li>End-to-end encryption for all communications</li>
+                            <li>Regular security audits and updates</li>
+                            <li>Secure data storage and handling</li>
+                            <li>Limited employee access to user data</li>
+                        </ul>
+
+                        <h3 class="text-lg font-semibold text-white mt-6">Your Rights</h3>
+                        <p class="text-gray-300">
+                            You have the right to:
+                        </p>
+                        <ul class="text-gray-300 list-disc pl-5 space-y-2">
+                            <li>Access your personal data</li>
+                            <li>Request data deletion</li>
+                            <li>Opt-out of data collection</li>
+                            <li>Export your data</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            lucide.createIcons();
+        }
+
+        // Terms & Conditions Modal
+        function showTerms() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="bg-dark-200 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 relative">
+                    <button onclick="this.closest('.fixed').remove()" 
+                            class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                    <h2 class="text-2xl font-bold text-accent-blue mb-4">Terms & Conditions</h2>
+                    <div class="prose prose-invert prose-sm">
+                        <p class="text-gray-400">Last updated: January 2025</p>
+                        <h3 class="text-lg font-semibold text-white mt-6">1. Acceptance of Terms</h3>
+                        <p class="text-gray-300">
+                            By accessing or using FP-GPT, you agree to be bound by these terms and conditions, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.
+                        </p>
+                        <h3 class="text-lg font-semibold text-white mt-6">2. Use License</h3>
+                        <ul class="text-gray-300 list-disc pl-5 space-y-2">
+                            <li>Personal, non-commercial use only</li>
+                            <li>No reproduction without permission</li>
+                            <li>No modification or derivative works</li>
+                            <li>No unauthorized distribution</li>
+                        </ul>
+
+                        <h3 class="text-lg font-semibold text-white mt-6">3. Disclaimer</h3>
+                        <p class="text-gray-300">
+                            The materials on FP-GPT are provided on an 'as is' basis. We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+                        </p>
+                        <h3 class="text-lg font-semibold text-white mt-6">4. Limitations</h3>
+                        <ul class="text-gray-300 list-disc pl-5 space-y-2">
+                            <li>No guarantee of continuous service</li>
+                            <li>Right to modify or discontinue service</li>
+                            <li>No liability for data loss or damage</li>
+                            <li>Usage limits may apply</li>
+                        </ul>
+
+                        <h3 class="text-lg font-semibold text-white mt-6">5. Governing Law</h3>
+                        <p class="text-gray-300">
+                            These terms and conditions are governed by and construed in accordance with the laws, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.
+                        </p>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html> 
