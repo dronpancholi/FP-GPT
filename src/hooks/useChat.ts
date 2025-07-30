@@ -1,8 +1,9 @@
 import { useState, useCallback } from 'react';
 import { Message } from '../types';
-import { generateText } from '../services/ai/textGeneration';
+import { gemini } from '../services/ai/gemini';
 import { LocalStorageService } from '../services/storage/localStorage';
 import { withRetry } from '../utils/retry';
+import { KnowledgeAggregator } from '../services/ai/knowledgeAggregator';
 
 const storage = new LocalStorageService();
 
@@ -31,16 +32,32 @@ export function useChat() {
     setIsProcessing(true);
 
     try {
-      // Pass current messages for context-aware responses
-      const response = await withRetry(
-        () => generateText(content, messages),
-        3,
-        1000
-      );
+      const history = messages.map(msg => ({
+        role: msg.role === 'assistant' ? 'model' : 'user',
+        parts: [{ text: msg.content }],
+      }));
+
+      const systemPrompt = await KnowledgeAggregator.getSystemPrompt(history);
+      const chat = gemini.startChat({
+        history: [
+            ...history,
+            { role: 'model', parts: [{ text: systemPrompt }] }
+        ],
+        generationConfig: {
+          maxOutputTokens: 800,
+          temperature: 0.7,
+          topP: 0.9,
+          topK: 40,
+        },
+      });
+
+      const result = await chat.sendMessage(content);
+      const response = result.response;
+      const text = response.text();
 
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: response,
+        content: text,
         role: 'assistant',
         timestamp: new Date()
       };
