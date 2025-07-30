@@ -3,7 +3,6 @@ import { Message } from '../types';
 import { gemini } from '../services/ai/gemini';
 import { LocalStorageService } from '../services/storage/localStorage';
 import { withRetry } from '../utils/retry';
-import { KnowledgeAggregator } from '../services/ai/knowledgeAggregator';
 
 const storage = new LocalStorageService();
 
@@ -37,12 +36,8 @@ export function useChat() {
         parts: [{ text: msg.content }],
       }));
 
-      const systemPrompt = await KnowledgeAggregator.getSystemPrompt(history);
       const chat = gemini.startChat({
-        history: [
-            ...history,
-            { role: 'model', parts: [{ text: systemPrompt }] }
-        ],
+        history: history,
         generationConfig: {
           maxOutputTokens: 800,
           temperature: 0.7,
